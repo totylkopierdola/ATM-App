@@ -1,0 +1,24 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {
+      fontFamily: {
+        // i need Lato font for this project to be a primary one
+        lato: ["Lato", "sans-serif"],
+      },
+      colors: {
+        // preferred colors hash for dark mode (font should be white)
+        primary: "#F5F5F5",
+      },
+    },
+  },
+  plugins: [],
+};
