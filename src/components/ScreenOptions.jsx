@@ -16,7 +16,11 @@ const ScreenOptions = ({ setScreenPage }) => {
           </Button>
         </div>
 
-        <Button variant="digital-secondary" fullWidth>
+        <Button
+          variant="digital-secondary"
+          fullWidth
+          onClick={() => setScreenPage("BALANCE_CONTENT")}
+        >
           Balance
         </Button>
       </div>
