@@ -1,13 +1,12 @@
 import { useEffect } from "react";
-import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
-const ScreenHome = ({ setScreenPage }) => {
-  // function handleClick() {
-  //   console.log("Button Clicked!");
-  // }
+const ScreenHome = () => {
+  let navigate = useNavigate();
+
   useEffect(() => {
     setTimeout(() => {
-      setScreenPage("OPTIONS_CONTENT");
+      navigate("/options");
     }, 3000);
   });
   return (

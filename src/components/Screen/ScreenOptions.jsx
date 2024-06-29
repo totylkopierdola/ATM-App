@@ -1,6 +1,7 @@
-import Button from "./Button";
+import { Link } from "react-router-dom";
+import Button from "../Button";
 
-const ScreenOptions = ({ setScreenPage }) => {
+const ScreenOptions = () => {
   return (
     <>
       <div className="flex flex-col justify-around transition-opacity duration-5000">
@@ -11,18 +12,17 @@ const ScreenOptions = ({ setScreenPage }) => {
           <Button variant="digital" className="shadow-inner" fullWidth>
             Withdraw
           </Button>
-          <Button variant="digital" className="shadow-inner" fullWidth>
-            Deposit
-          </Button>
+          <Link to="/deposit">
+            <Button variant="digital" className="shadow-inner" fullWidth>
+              Deposit
+            </Button>
+          </Link>
         </div>
-
-        <Button
-          variant="digital-secondary"
-          fullWidth
-          onClick={() => setScreenPage("BALANCE_CONTENT")}
-        >
-          Balance
-        </Button>
+        <Link to="/balance">
+          <Button variant="digital-secondary" fullWidth>
+            Balance
+          </Button>
+        </Link>
       </div>
     </>
   );
