@@ -17,9 +17,10 @@ export const useATMContext = () => {
 
 const ATMProvider = ({ children }) => {
   const [screenPage, setScreenPage] = useState("HOME_CONTENT");
+  const [balance, setBalance] = useState(128000);
 
   return (
-    <ATMContext.Provider value={{ screenPage, setScreenPage }}>
+    <ATMContext.Provider value={{ screenPage, setScreenPage, balance }}>
       {children}
     </ATMContext.Provider>
   );

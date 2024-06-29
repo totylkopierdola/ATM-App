@@ -1,4 +1,4 @@
-import Button from "./Button";
+import Button from "./ui/Button";
 
 const Keyboard = ({ onDigitPress, onClearPress }) => {
   const numbersKeyboard = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "000"];
