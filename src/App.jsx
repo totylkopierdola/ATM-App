@@ -10,7 +10,7 @@ function App() {
         <h4 className="text-center">EURONET</h4>
         <hr />
         <Screen />
-        <Keyboard />
+        {/* <Keyboard /> */}
         {/* <Cube /> */}
       </div>
     </div>

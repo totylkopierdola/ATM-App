@@ -1,7 +1,20 @@
+import { useContext } from "react";
 import Button from "./ui/Button";
+import { ATMContext } from "../context/ATMProvider";
+import { Link, useParams } from "react-router-dom";
 
-const Keyboard = ({ onDigitPress, onClearPress }) => {
+const Keyboard = () => {
   const numbersKeyboard = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "000"];
+
+  const { withdrawalAmount, setWithdrawalAmount } = useContext(ATMContext);
+
+  const params = useParams();
+  console.log("params", params);
+
+  const onDigitPress = (digit) => {
+    // its being added as a string because state is = '', which is string
+    setWithdrawalAmount((prev) => prev + digit);
+  };
 
   return (
     <div className="flex flex-row justify-between mx-2">
@@ -9,7 +22,8 @@ const Keyboard = ({ onDigitPress, onClearPress }) => {
         {numbersKeyboard.map((key) => (
           <button
             key={key}
-            onClick={() => (key === "C" ? onClearPress() : onDigitPress(key))}
+            // onClick={() => (key === "C" ? onClearPress() : onDigitPress(key))}
+            onClick={() => onDigitPress(key)}
             className="bg-gray-300 active:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full flex justify-center shadow-md active:shadow-inner active:shadow-slate-950"
           >
             {key}
@@ -17,10 +31,20 @@ const Keyboard = ({ onDigitPress, onClearPress }) => {
         ))}
       </div>
       <div className="flex flex-col h-full gap-2">
-        <Button onClick={null} variant="danger" className="ml-2">
-          Cancel
-        </Button>
-        <Button onClick={null} variant="primary" className="ml-2">
+        <Link to="/">
+          <Button
+            // onClick={() => (window.location.href = "/")}
+            variant="danger"
+            className="ml-2"
+          >
+            Cancel
+          </Button>
+        </Link>
+        <Button
+          onClick={() => setWithdrawalAmount("")}
+          variant="primary"
+          className="ml-2"
+        >
           Clear
         </Button>
         <Button onClick={null} variant="success" className="ml-2">

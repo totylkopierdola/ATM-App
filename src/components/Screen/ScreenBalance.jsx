@@ -10,9 +10,9 @@ const ScreenBalance = () => {
   return (
     <div className="flex flex-col justify-center relative items-center">
       <div className="transform transition duration-300 rounded-lg shadow-lg lg:w-[85%] w-[95%] h-[70%] mx-auto hover:shadow-xl bg-white flex flex-col gap-5">
-        {/* little screen */}
         <div className="bg-gradient-to-br from-rose-100 via-purple-200 to-purple-200 m-2 h-3/6 rounded-lg flex items-center justify-center">
           <input
+            readOnly
             value={balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
             className="h-3/5 bg-white rounded bg-opacity-50 border-b border-slate-800 border-opacity-10 text-slate-700 outline-none text-center lg:text-3xl text-2xl w-10/12"
           />

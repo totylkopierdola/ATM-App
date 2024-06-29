@@ -18,9 +18,21 @@ export const useATMContext = () => {
 const ATMProvider = ({ children }) => {
   const [screenPage, setScreenPage] = useState("HOME_CONTENT");
   const [balance, setBalance] = useState(128000);
+  const [withdrawalAmount, setWithdrawalAmount] = useState("");
+  const [depositAmount, setDepositAmount] = useState("");
 
   return (
-    <ATMContext.Provider value={{ screenPage, setScreenPage, balance }}>
+    <ATMContext.Provider
+      value={{
+        screenPage,
+        setScreenPage,
+        balance,
+        withdrawalAmount,
+        setWithdrawalAmount,
+        depositAmount,
+        setDepositAmount,
+      }}
+    >
       {children}
     </ATMContext.Provider>
   );

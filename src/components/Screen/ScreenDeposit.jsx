@@ -10,11 +10,12 @@ const ScreenDeposit = () => {
 
   return (
     <div className="flex flex-col justify-center relative items-center">
-      <div className="transform transition duration-300 hover:scale-110 rounded-lg shadow-lg w-[75%] h-[70%] mx-auto hover:shadow-xl bg-white">
+      <div className="transform transition duration-300 hover:scale-105 rounded-lg shadow-lg w-[75%] h-[70%] mx-auto hover:shadow-xl bg-white">
         {/* little screen */}
         <div className="bg-gradient-to-br from-rose-100 via-purple-200 to-purple-200 m-2 h-3/6 rounded-lg flex items-center justify-center">
           <input
             type="number"
+            readOnly
             defaultValue={0}
             className="h-3/5 relative bg-white rounded bg-opacity-50 border-b border-slate-800 border-opacity-10 text-slate-700 outline-none text-center text-3xl w-10/12"
             onInput={(e) => {
