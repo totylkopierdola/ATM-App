@@ -5,28 +5,31 @@ import { ATMContext } from "../../context/ATMProvider";
 import { Banknote, Undo2 } from "lucide-react";
 
 const ScreenBalance = () => {
-  let navigate = useNavigate();
   const { balance } = useContext(ATMContext);
 
   return (
-    <div className="flex flex-col justify-center relative w-full items-center text-slate-700">
-      <h3 className="text-center  break-words whitespace-normal ">
-        Your balance
-      </h3>
-      <Banknote className="w-10 h-10" />
-      <hr className="w-1/2" />
-      {/* add space once every 3 digit numbers */}
-      <h2 className="font-extrabold">
-        {balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} PLN
-      </h2>
-      <Link to="/options">
-        <Button
-          className="absolute left-2 bottom-2"
-          variant="digital-secondary"
-        >
-          <Undo2 />
-        </Button>
-      </Link>
+    <div className="flex flex-col justify-center relative items-center">
+      <div className="transform transition duration-300 rounded-lg shadow-lg lg:w-[85%] w-[95%] h-[70%] mx-auto hover:shadow-xl bg-white flex flex-col gap-5">
+        {/* little screen */}
+        <div className="bg-gradient-to-br from-rose-100 via-purple-200 to-purple-200 m-2 h-3/6 rounded-lg flex items-center justify-center">
+          <input
+            value={balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+            className="h-3/5 bg-white rounded bg-opacity-50 border-b border-slate-800 border-opacity-10 text-slate-700 outline-none text-center lg:text-3xl text-2xl w-10/12"
+          />
+        </div>
+
+        <h2 className="font-semibold text-center text-slate-800 lg:text-3xl text-2xl">
+          Total balance <Banknote className="inline-block ml-2" />
+        </h2>
+      </div>
+      <div className="flex w-full justify-center mt-2">
+        <Link to="/options">
+          <Button variant="digital-secondary" className="">
+            back
+            <Undo2 className="ml-1" />
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 };

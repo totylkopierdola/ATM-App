@@ -27,9 +27,10 @@
   /* padding: 10px; */
   line-height: 200px;
   text-align: center;
-  height: 100%;
+  /* height: 100%; */
+  height: 300px;
   width: 100%;
-  opacity: 0.9;
+  opacity: 0.5;
   border: 1px solid #000;
   color: #fff;
   font-weight: bold;
@@ -38,10 +39,12 @@
 .front {
   -webkit-transform: translateZ(100px);
   transform: translateZ(100px);
-  background-color: #142864e6;
+  /* background-color: #142864e6; */
+  background-color: #142864;
+  /* background-color: red; */
 }
 
-.back {
+/* .back {
   -webkit-transform: translateZ(-100px) rotateY(180deg);
   transform: translateZ(-100px) rotateY(180deg);
   background-color: #e86836;
@@ -65,11 +68,11 @@
   transform: rotateY(270deg) translateX(-100px);
   transform-origin: center left;
   background-color: #00ff73;
-}
+} */
 
 .right {
   -webkit-transform: rotateY(-270deg) translateX(100px);
   transform: rotateY(-270deg) translateX(100px);
   transform-origin: top right;
-  background-color: #ffc900;
+  background-color: #0e1c46;
 }

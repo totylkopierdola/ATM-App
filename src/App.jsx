@@ -1,6 +1,7 @@
 import Home from "./pages/Home";
 import Screen from "./components/Screen/Screen";
-// import Cube from "./components/Cube/Cube";
+import Cube from "./components/Cube/Cube";
+import Keyboard from "./components/Keyboard";
 
 function App() {
   return (
@@ -9,9 +10,9 @@ function App() {
         <h4 className="text-center">EURONET</h4>
         <hr />
         <Screen />
-        <Home />
+        <Keyboard />
+        {/* <Cube /> */}
       </div>
-      {/* <Cube /> */}
     </div>
   );
 }

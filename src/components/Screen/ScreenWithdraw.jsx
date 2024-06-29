@@ -22,7 +22,7 @@ const ScreenWithdraw = () => {
 
         <div className="px-5 pt-2 flex flex-col ">
           <h4 className="font-semibold text-center text-slate-800">
-            Enter the amount you wish to withdraw
+            Enter the amount you wish to withdraw (PLN)
           </h4>
         </div>
       </div>

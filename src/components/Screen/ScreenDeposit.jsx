@@ -24,15 +24,11 @@ const ScreenDeposit = () => {
               }
             }}
           />
-
-          <span className="absolute right-10 text-slate-800 font-bold text-md">
-            PLN
-          </span>
         </div>
 
         <div className="px-5 pt-2 flex flex-col ">
           <h4 className="font-semibold text-center text-slate-800">
-            Enter the amount you wish to deposit
+            Enter the amount you wish to deposit (PLN)
           </h4>
         </div>
       </div>

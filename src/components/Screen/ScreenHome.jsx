@@ -12,7 +12,7 @@ const ScreenHome = () => {
   return (
     <>
       <div className="flex flex-col justify-around ">
-        <h3 className="text-center text-slate-50 break-words whitespace-normal animate-pulse">
+        <h3 className="text-center text-slate-800 break-words whitespace-normal animate-pulse">
           Welcome to <br /> ATM App
         </h3>
       </div>
