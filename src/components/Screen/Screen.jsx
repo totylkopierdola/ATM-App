@@ -11,7 +11,7 @@ const Screen = () => {
   return (
     <>
       <Router>
-        <div className="my-4 flex justify-center h-full bg-[#e8e8e8] shadow-inner shadow-slate-900">
+        <div className="mb-2 flex justify-center h-full bg-[#e8e8e8] shadow-inner shadow-slate-900">
           <Routes>
             <Route path="/" element={<ScreenHome />} />
             <Route path="/options" element={<ScreenOptions />} />

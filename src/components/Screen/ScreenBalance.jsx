@@ -18,8 +18,8 @@ const ScreenBalance = () => {
           />
         </div>
 
-        <h2 className="font-semibold text-center text-slate-800 lg:text-3xl text-2xl">
-          Total balance <Banknote className="inline-block ml-2" />
+        <h2 className="font-semibold text-center text-green-500 lg:text-3xl text-2xl">
+          Balance (PLN) <Banknote className="inline-block ml-2" />
         </h2>
       </div>
       <div className="flex w-full justify-center mt-2">
