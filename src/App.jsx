@@ -1,7 +1,4 @@
-import Home from "./pages/Home";
 import Screen from "./components/Screen/Screen";
-import Cube from "./components/Cube/Cube";
-import Keyboard from "./components/Keyboard";
 import { HandCoins } from "lucide-react";
 
 function App() {
