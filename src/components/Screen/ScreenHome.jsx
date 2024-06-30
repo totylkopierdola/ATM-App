@@ -7,7 +7,7 @@ const ScreenHome = () => {
   useEffect(() => {
     setTimeout(() => {
       navigate("/options");
-    }, 3000);
+    }, 300);
   });
   return (
     <>
