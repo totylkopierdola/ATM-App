@@ -1,19 +1,31 @@
 import { useContext } from "react";
 import Button from "./ui/Button";
 import { ATMContext } from "../context/ATMProvider";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Keyboard = () => {
   const numbersKeyboard = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "000"];
 
-  const { withdrawalAmount, setWithdrawalAmount } = useContext(ATMContext);
+  const {
+    withdrawalAmount,
+    setWithdrawalAmount,
+    depositAmount,
+    setDepositAmount,
+  } = useContext(ATMContext);
 
-  const params = useParams();
-  console.log("params", params);
+  const currentPath = useLocation().pathname;
+  console.log(currentPath);
 
   const onDigitPress = (digit) => {
     // its being added as a string because state is = '', which is string
-    setWithdrawalAmount((prev) => prev + digit);
+
+    if (currentPath === "/options/withdraw") {
+      setWithdrawalAmount((prev) => prev + digit.toString());
+    }
+
+    if (currentPath === "/options/deposit") {
+      setDepositAmount((prev) => prev + digit.toString());
+    }
   };
 
   return (
@@ -22,7 +34,6 @@ const Keyboard = () => {
         {numbersKeyboard.map((key) => (
           <button
             key={key}
-            // onClick={() => (key === "C" ? onClearPress() : onDigitPress(key))}
             onClick={() => onDigitPress(key)}
             className="bg-gray-300 active:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full flex justify-center shadow-md active:shadow-inner active:shadow-slate-950"
           >
@@ -33,7 +44,10 @@ const Keyboard = () => {
       <div className="flex flex-col h-full gap-2">
         <Link to="/">
           <Button
-            // onClick={() => (window.location.href = "/")}
+            onClick={() => {
+              setWithdrawalAmount("");
+              setDepositAmount("");
+            }}
             variant="danger"
             className="ml-2"
           >
@@ -41,7 +55,10 @@ const Keyboard = () => {
           </Button>
         </Link>
         <Button
-          onClick={() => setWithdrawalAmount("")}
+          onClick={() => {
+            setWithdrawalAmount("");
+            setDepositAmount("");
+          }}
           variant="primary"
           className="ml-2"
         >

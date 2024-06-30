@@ -6,7 +6,7 @@ import { Undo2 } from "lucide-react";
 
 const ScreenDeposit = () => {
   let navigate = useNavigate();
-  const { balance } = useContext(ATMContext);
+  const { balance, depositAmount } = useContext(ATMContext);
 
   return (
     <div className="flex flex-col justify-center relative items-center">
@@ -16,7 +16,8 @@ const ScreenDeposit = () => {
           <input
             type="number"
             readOnly
-            defaultValue={0}
+            value={depositAmount ? depositAmount : 0}
+            maxLength="6"
             className="h-3/5 relative bg-white rounded bg-opacity-50 border-b border-slate-800 border-opacity-10 text-slate-700 outline-none text-center text-3xl w-10/12"
             onInput={(e) => {
               // Restrict input to maximum 6 digits

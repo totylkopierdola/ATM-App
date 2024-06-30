@@ -23,7 +23,7 @@ const Button = ({
         variant === "success",
       "bg-blue-500 cursor-pointer font-bold text-white py-1 mt-2 transition duration-150 px-4 hover:bg-green-500 uppercase":
         variant === "digital",
-      "bg-white shadow-md shadow text-slate-500 cursor-pointer font-bold text-white py-1 mt-2 px-4 transition duration-150 hover:bg-slate-900/10 uppercase ":
+      "bg-slate-500 cursor-pointer font-bold text-white py-1 mt-2 transition duration-150 px-4 hover:bg-gray-700 uppercase":
         variant === "digital-secondary",
     },
     className
