@@ -1,5 +1,9 @@
-import { createContext, useContext, useState } from "react";
-
+import { createContext, useContext, useState, useEffect } from "react";
+import {
+  removeLeadingZeros,
+  validateWithdrawal,
+  validateDeposit,
+} from "../utils/helpers";
 export const ATMContext = createContext(undefined);
 
 export const useATMContext = () => {
@@ -17,40 +21,41 @@ const ATMProvider = ({ children }) => {
   const [depositAmount, setDepositAmount] = useState("");
   const [error, setError] = useState("");
 
-  const validateWithdrawal = (amount) => {
-    if (amount > balance) {
-      setError("You don't have enough funds");
-      return false;
-    }
-
-    if (amount % 10 !== 0) {
-      setError("Please enter a multiple of 10");
-      return false;
-    }
-
-    if (amount > 1000) {
-      setError("You can withdraw a maximum of 1000 PLN");
-      return false;
-    }
-
-    if (amount <= 0) {
-      setError("Please enter a valid amount");
-      return false;
-    }
-
-    setError("");
-    return true;
-  };
+  useEffect(() => {
+    return () => {
+      // Cleanup function to reset state when unmounting or navigating away
+      setWithdrawalAmount("0");
+      setDepositAmount("");
+      setError("");
+    };
+  }, []);
 
   const onWithdraw = () => {
     const parsedWithdrawalAmount = parseInt(withdrawalAmount, 10);
+    const withdrawalError = validateWithdrawal(parsedWithdrawalAmount, balance);
 
-    if (!validateWithdrawal(parsedWithdrawalAmount)) {
+    if (withdrawalError) {
+      setError(withdrawalError);
       return;
     }
 
     setBalance((prevBalance) => prevBalance - parsedWithdrawalAmount);
     setWithdrawalAmount("0");
+    setError("");
+  };
+
+  const onDeposit = () => {
+    const parsedDepositAmount = parseInt(depositAmount, 10);
+    const depositError = validateDeposit(parsedDepositAmount);
+
+    if (depositError) {
+      setError(depositError);
+      return;
+    }
+
+    setBalance((prevBalance) => prevBalance + parsedDepositAmount);
+    setDepositAmount("0");
+    setError("");
   };
 
   return (
@@ -63,7 +68,9 @@ const ATMProvider = ({ children }) => {
         depositAmount,
         setDepositAmount,
         error,
+        setError,
         onWithdraw,
+        onDeposit,
       }}
     >
       {children}

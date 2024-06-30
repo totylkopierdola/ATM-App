@@ -13,6 +13,7 @@ const Keyboard = () => {
     depositAmount,
     setDepositAmount,
     onWithdraw,
+    onDeposit,
   } = useContext(ATMContext);
 
   const currentPath = useLocation().pathname;
@@ -69,7 +70,14 @@ const Keyboard = () => {
         >
           Clear
         </Button>
-        <Button onClick={onWithdraw} variant="success" className="ml-2">
+        <Button
+          onClick={() => {
+            if (currentPath === "/options/withdraw") onWithdraw();
+            if (currentPath === "/options/deposit") onDeposit();
+          }}
+          variant="success"
+          className="ml-2"
+        >
           Enter
         </Button>
         <button className="bg-gray-300 active:shadow-inner active:shadow-slate-950 flex justify-center active:bg-gray-400 h-full text-white font-bold py-2 px-4 rounded-full ml-2"></button>

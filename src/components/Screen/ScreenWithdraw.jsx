@@ -5,21 +5,22 @@ import { Undo2 } from "lucide-react";
 import { ATMContext } from "../../context/ATMProvider";
 
 const ScreenWithdraw = () => {
-  const { balance, withdrawalAmount, setWithdrawalAmount, error, onWithdraw } =
-    useContext(ATMContext);
+  const {
+    balance,
+    withdrawalAmount,
+    setWithdrawalAmount,
+    setError,
+    error,
+    onWithdraw,
+  } = useContext(ATMContext);
 
   useEffect(() => {
     setWithdrawalAmount("0");
+    setError("");
   }, [setWithdrawalAmount]);
 
   return (
     <div className="flex flex-col justify-center items-center relative">
-      {/* <h1
-        className="text-2xl font-bold mb-4 text-red-500"
-        onClick={() => console.log("withdrawalAmount", withdrawalAmount)}
-      >
-        {balance} PLN
-      </h1> */}
       <div className="transform transition duration-300 hover:scale-105 rounded-lg shadow-lg w-3/4 h-3/4 mx-auto hover:shadow-xl bg-white">
         <div className="bg-gradient-to-br from-rose-100 via-purple-200 to-purple-200 m-2 h-1/2 rounded-lg flex items-center justify-center">
           <input
