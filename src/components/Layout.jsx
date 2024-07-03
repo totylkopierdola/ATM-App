@@ -1,4 +1,3 @@
-import React from "react";
 import { HandCoins } from "lucide-react";
 import Keyboard from "./Keyboard";
 

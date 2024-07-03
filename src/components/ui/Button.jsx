@@ -1,7 +1,7 @@
-import React from "react";
+import { memo } from "react";
 import cn from "classnames";
 
-const Button = React.memo(
+const Button = memo(
   ({
     onClick,
     type,

@@ -1,23 +1,16 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Layout from "./components/Layout";
-import ScreenHome from "./components/Screen/ScreenHome";
-import ScreenOptions from "./components/Screen/ScreenOptions";
-import ScreenWithdraw from "./components/Screen/ScreenWithdraw";
-import ScreenDeposit from "./components/Screen/ScreenDeposit";
-import ScreenBalance from "./components/Screen/ScreenBalance";
+import AppRoutes from "./routes/AppRoutes";
+import ATMProvider from "./context/ATMProvider";
 
 function App() {
   return (
     <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<ScreenHome />} />
-          <Route path="/options" element={<ScreenOptions />} />
-          <Route path="/options/withdraw" element={<ScreenWithdraw />} />
-          <Route path="/options/deposit" element={<ScreenDeposit />} />
-          <Route path="/options/balance" element={<ScreenBalance />} />
-        </Routes>
-      </Layout>
+      <ATMProvider>
+        <Layout>
+          <AppRoutes />
+        </Layout>
+      </ATMProvider>
     </Router>
   );
 }
