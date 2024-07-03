@@ -2,35 +2,45 @@ import { useContext } from "react";
 import Button from "./ui/Button";
 import { Link, useLocation } from "react-router-dom";
 import { ATMContext } from "../context/ATMProvider";
-import { removeLeadingZeros } from "../utils/helpers";
 
 const Keyboard = () => {
   const numbersKeyboard = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "000"];
-
   const {
-    withdrawalAmount,
+    handleWithdrawalInput,
+    handleDepositInput,
+    clearWithdrawalInput,
+    clearDepositInput,
     setWithdrawalAmount,
-    depositAmount,
     setDepositAmount,
     onWithdraw,
     onDeposit,
   } = useContext(ATMContext);
-
   const currentPath = useLocation().pathname;
 
   const onDigitPress = (digit) => {
     if (currentPath === "/options/withdraw") {
-      setWithdrawalAmount((prev) => {
-        const newAmount = removeLeadingZeros(prev + digit.toString());
-        return newAmount === "" ? "0" : newAmount;
-      });
+      handleWithdrawalInput(digit.toString());
     }
-
     if (currentPath === "/options/deposit") {
-      setDepositAmount((prev) => {
-        const newAmount = removeLeadingZeros(prev + digit.toString());
-        return newAmount === "" ? "0" : newAmount;
-      });
+      handleDepositInput(digit.toString());
+    }
+  };
+
+  const onClear = () => {
+    if (currentPath === "/options/withdraw") {
+      clearWithdrawalInput();
+    }
+    if (currentPath === "/options/deposit") {
+      clearDepositInput();
+    }
+  };
+
+  const onEnter = () => {
+    if (currentPath === "/options/withdraw") {
+      onWithdraw();
+    }
+    if (currentPath === "/options/deposit") {
+      onDeposit();
     }
   };
 
@@ -60,24 +70,10 @@ const Keyboard = () => {
             Cancel
           </Button>
         </Link>
-        <Button
-          onClick={() => {
-            setWithdrawalAmount("0");
-            setDepositAmount("0");
-          }}
-          variant="primary"
-          className="ml-2"
-        >
+        <Button onClick={onClear} variant="primary" className="ml-2">
           Clear
         </Button>
-        <Button
-          onClick={() => {
-            if (currentPath === "/options/withdraw") onWithdraw();
-            if (currentPath === "/options/deposit") onDeposit();
-          }}
-          variant="success"
-          className="ml-2"
-        >
+        <Button onClick={onEnter} variant="success" className="ml-2">
           Enter
         </Button>
         <button className="bg-gray-300 active:shadow-inner active:shadow-slate-950 flex justify-center active:bg-gray-400 h-full text-white font-bold py-2 px-4 rounded-full ml-2"></button>

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { ATMContext } from "../../context/ATMProvider";
 import TransactionScreen from "./TransactionScreen";
 
@@ -6,16 +6,10 @@ const ScreenWithdraw = () => {
   const {
     balance,
     withdrawalAmount,
-    setWithdrawalAmount,
-    setError,
+    handleWithdrawalInput,
     error,
     onWithdraw,
   } = useContext(ATMContext);
-
-  useEffect(() => {
-    setWithdrawalAmount("0");
-    setError("");
-  }, [setWithdrawalAmount, setError]);
 
   return (
     <TransactionScreen
@@ -23,6 +17,7 @@ const ScreenWithdraw = () => {
       balance={balance}
       error={error}
       onSubmit={onWithdraw}
+      onInputChange={handleWithdrawalInput}
       transactionType="withdraw"
     />
   );

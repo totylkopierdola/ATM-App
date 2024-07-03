@@ -1,4 +1,3 @@
-// helpers.js
 export const removeLeadingZeros = (str) => {
   return str.replace(/^0+/, "") || "0";
 };
@@ -26,7 +25,6 @@ export const validateWithdrawal = (amount, balance) => {
 
 //deposit validation
 export const validateDeposit = (amount) => {
-  // give here conditionals that should be present in ATM machine deposit feature:
   if (amount <= 0) {
     return "Please enter a valid amount";
   }
